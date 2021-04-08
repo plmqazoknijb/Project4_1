@@ -27,38 +27,38 @@ public class MainActivity extends AppCompatActivity {
         edit2 = findViewById(R.id.edit2);
         textResult = findViewById(R.id.t1);
 
-        btnPlus.setOnTouchListener(btnListener);
-        btnMinus.setOnTouchListener(btnListener);
-        btnMulti.setOnTouchListener(btnListener);
-        btnDiv.setOnTouchListener(btnListener);
+        btnPlus.setOnClickListener(btnListener);
+        btnMinus.setOnClickListener(btnListener);
+        btnMulti.setOnClickListener(btnListener);
+        btnDiv.setOnClickListener(btnListener);
 
     }
 
-    View.OnTouchListener btnListener = new View.OnTouchListener() {
+    View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            String strEdit1 = edit1.getText().toString();
-            String strEdit2 = edit2.getText().toString();
-            int num1 = Integer.parseInt(strEdit1);
-            int num2 = Integer.parseInt(strEdit2);
-            int result = 0;
-            switch (v.getId()){
-                case R.id.btn1:
-                    result = num1+num2;
-                    break;
-                case R.id.btn2:
-                    result = num1 - num2;
-                    break;
-                case R.id.btn3:
-                    result = num1 * num2;
-                    break;
-                case R.id.btn4:
-                    result = num1 / num2;
-                    break;
+        public void onClick(View v) {
+                String strEdit1 = edit1.getText().toString();
+                String strEdit2 = edit2.getText().toString();
+                int num1 = Integer.parseInt(strEdit1);
+                int num2 = Integer.parseInt(strEdit2);
+                int result = 0;
+                switch (v.getId()) {
+                    case R.id.btn1:
+                        result = num1 + num2;
+                        break;
+                    case R.id.btn2:
+                        result = num1 - num2;
+                        break;
+                    case R.id.btn3:
+                        result = num1 * num2;
+                        break;
+                    case R.id.btn4:
+                        result = num1 / num2;
+                        break;
+                }
+                textResult.setText(R.string.t1);
+                textResult.append(result + "");
+
             }
-            textResult.setText(R.string.t1);
-            textResult.append(result+"");
-            return false;
-        }
-    };
+        };
 }
